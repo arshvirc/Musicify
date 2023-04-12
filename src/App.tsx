@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Sidebar from "./components/Sidebar";
+import { Navigation } from "./components/Navigation";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div className="relative flex">
-      <Sidebar />
+      <Navigation />
       <div className="flex-1 flex flex-col bg-gradient-to-br from-black to-[#121286]">
         <div className="px-6 h-[calc(100vh-72px)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse"></div>
       </div>
