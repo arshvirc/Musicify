@@ -1,86 +1,95 @@
+import { IconType } from "react-icons";
+import { TiHome } from "react-icons/ti";
+import { RiSearch2Fill } from "react-icons/ri";
+import { ImLibrary } from "react-icons/im";
+import { IoIosAddCircle } from "react-icons/io";
+import { GiAbstract116 } from "react-icons/gi";
+
 interface NavItemDesc {
   text: string;
-  URL: string;
-  IMAGE: string;
+  link: string;
+  icon: IconType;
 }
 
-const Home = {
+// Hardcoded for now
+const Home: NavItemDesc = {
   text: "Home",
-  URL: "string",
-  IMAGE: "string",
+  link: "#",
+  icon: TiHome,
 };
-const Search = {
-  text: "Search",
-  URL: "string",
-  IMAGE: "string",
+const Browse: NavItemDesc = {
+  text: "Browse",
+  link: "#",
+  icon: RiSearch2Fill,
 };
-const YourLibrary = {
+const YourLibrary: NavItemDesc = {
   text: "Your Library",
-  URL: "string",
-  IMAGE: "string",
+  link: "#",
+  icon: ImLibrary,
 };
 
-const pages: NavItemDesc[] = [Home, Search, YourLibrary];
-const songs: NavItemDesc[] = [Home, Search, YourLibrary];
+const CreatePlaylist: NavItemDesc = {
+  text: "Create Playlist",
+  link: "#",
+  icon: IoIosAddCircle,
+};
 
+// Generates a navigation item for the user to click on
 function NavItem(props: NavItemDesc) {
   return (
-    <li>
-      <a
-        href="#"
-        className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
-      >
-        <svg
-          aria-hidden="true"
-          className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+    <li className="hover:text-primary hover:bg-gray-900 rounded-xl">
+      <a href={props.link} className="flex items-center p-2 rounded-lg">
+        <props.icon
+          className="w-6 h-6 transition duration-75"
           fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
-          <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
-        </svg>
+        />
         <span className="ml-3">{props.text}</span>
       </a>
     </li>
   );
 }
 
-// Generates a list of the playlists for the given playlist
+// Retrieve and pass in the playlist data as NavItemDesc to generate all the playlists at once
+// This function makes sense to automatically generate since it is the most dynamically changing of all options
 function PlaylistBundle(props: NavItemDesc[]) {
   return (
     <div>
-      {props.map((title: NavItemDesc) => (
-        <NavItem {...title} />
+      {props.map((Playlist: NavItemDesc) => (
+        <NavItem {...Playlist} />
       ))}
     </div>
   );
 }
 
+const a: NavItemDesc[] = [Home];
+
 export function Navigation() {
   return (
-    <aside className="fixed top-0 left-0 z-40 w-64 h-screen">
-      <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+    <aside className="fixed top-0 left-0 z-40 w-64 h-screen bg-[#050505] border-r border-primary">
+      <div className="h-full px-3 py-4 overflow-y-auto pl-8">
         {/* Web App Logo */}
-        <a href="#" className="flex items-center pl-2.5 mb-5">
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="h-6 mr-3 sm:h-7"
-            alt="Flowbite Logo"
+        <a href="#" className="flex items-center pl-2 pt-4 mb-5">
+          <GiAbstract116
+            className="w-10 h-10 transition duration-75"
+            fill="currentColor"
           />
-          <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-            Loki
+          <span className="ml-3 self-center text-xl font-semibold whitespace-nowrap">
+            Musicify
           </span>
         </a>
-        <ul className="space-y-2 font-medium">
-          {/* pages link */}
+        <ul className="pt-4 mt-4 space-y-2 font-medium">
+          <p></p>
           <NavItem {...Home} />
-          <NavItem {...Search} />
+          <NavItem {...Browse} />
           <NavItem {...YourLibrary} />
         </ul>
-        {/* // Bottom components */}
-        <ul className="pt-4 mt-4 space-y-2 font-medium border-t border-gray-200 dark:border-gray-700">
-          <NavItem {...Search} />
+        <ul className="pt-8 mt-8 space-y-2 font-medium">
+          <p className="">YOUR MUSIC</p>
+          <NavItem {...CreatePlaylist} />
+        </ul>
+        <ul className="pt-4 mt-4 space-y-2 font-medium border-t border-black">
+          {/* Make this scrollable by using css or whatever you need */}
+          <p className="">YOUR PLAYLISTS</p>
         </ul>
       </div>
     </aside>
