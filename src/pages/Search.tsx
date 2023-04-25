@@ -1,3 +1,3 @@
-export const Profile = () => {
+export const Search = () => {
   return <div> Hi </div>;
 };

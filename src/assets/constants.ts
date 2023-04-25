@@ -1,8 +1,9 @@
 import { IconType } from "react-icons";
-import { TiHome } from "react-icons/ti";
-import { RiSearch2Fill } from "react-icons/ri";
-import { ImLibrary } from "react-icons/im";
-import { IoIosAddCircle } from "react-icons/io";
+import { GoSettings } from "react-icons/go";
+import { BsCollectionPlay } from "react-icons/bs";
+import { HiOutlineHome, HiMusicNote } from "react-icons/hi";
+
+import { FaUserFriends } from "react-icons/fa";
 
 export interface NavItemDesc {
   text: string;
@@ -10,48 +11,13 @@ export interface NavItemDesc {
   icon: IconType;
 }
 
-export const NavBundle = {
-  Home: {
-    text: "Home",
-    link: "#",
-    icon: TiHome,
-  },
-  Browse: {
-    text: "Explore",
-    link: "#",
-    icon: RiSearch2Fill, // Todo: update music icon
-  },
-  ForYou: {
-    text: "For You",
-    link: "#",
-    icon: ImLibrary, //  Todo: update icon
-  },
-  LikedSongs: {
-    text: "LikedSongs",
-    link: "#",
-    icon: TiHome,
-  },
-  Artists: {
-    text: "Artists",
-    link: "#",
-    icon: RiSearch2Fill, // Todo: update music icon
-  },
-  Suggestions: {
-    text: "Suggestions",
-    link: "#",
-    icon: ImLibrary, //  Todo: update icon
-  },
-  Podcasts: {
-    text: "Podcasts",
-    link: "#",
-    icon: IoIosAddCircle,
-  },
-  CreatePlaylist: {
-    text: "Create Playlist",
-    link: "#",
-    icon: IoIosAddCircle,
-  },
-};
+export const links = [
+  { name: "Home", to: "/", icon: HiOutlineHome },
+  { name: "Browse", to: "/browse", icon: HiMusicNote },
+  { name: "Friends", to: "/friends", icon: FaUserFriends },
+  { name: "My Playlists", to: "/my-playlists", icon: BsCollectionPlay },
+  { name: "Settings", to: "/settings", icon: GoSettings },
+];
 
 export const genres = [
   { title: "Pop", value: "POP" },

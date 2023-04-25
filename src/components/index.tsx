@@ -1,5 +1,5 @@
-import Navigation from "./Navigation";
+// import Navigation from "./Navigation";
 import Searchbar from "./Searchbar";
-import SongCard from "./SongCard";
+import AlbumCard from "./AlbumCard";
 
-export { Navigation, Searchbar, SongCard };
+export { Searchbar, AlbumCard };

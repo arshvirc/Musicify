@@ -1,4 +1,4 @@
-import { SongCard } from "../components";
+import { AlbumCard } from "../components";
 import { genres } from "../assets/constants";
 import { useSearchQuery } from "../redux/services/spotify";
 import { exploreResults } from "../redux/services/testResults";
@@ -12,7 +12,7 @@ const Explore = () => {
         <select
           onChange={() => {}}
           value=""
-          className="bg-black text-highlight p-3 text-sm rounded-lg outline-none sm:mt-0 mt-5"
+          className="bg-black text-grey p-3 text-sm rounded-lg outline-none sm:mt-0 mt-5"
         >
           {genres.map((genre) => (
             <option key={genre.value} value={genre.value}>
@@ -21,11 +21,22 @@ const Explore = () => {
           ))}
         </select>
       </div>
+      <h3> Top Results </h3>
       <div className="flex flex-wrap sm:justify-start justify-center gap-8">
         {exploreResults.albums.items.map((song) => (
-          <div>
-            <p>{song.data.name} </p>
-          </div>
+          <AlbumCard {...song.data} />
+        ))}
+      </div>
+      <h3> Top Artists</h3>
+      <div className="flex flex-wrap sm:justify-start justify-center gap-8">
+        {exploreResults.albums.items.map((song) => (
+          <AlbumCard {...song.data} />
+        ))}
+      </div>
+      <h3> Top Albums</h3>
+      <div className="flex flex-wrap sm:justify-start justify-center gap-8">
+        {exploreResults.albums.items.map((song) => (
+          <AlbumCard {...song.data} />
         ))}
       </div>
     </div>
